@@ -9,25 +9,11 @@ import { fetchNEOData } from './utils/fetchData';
 import './styles/App.css';
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const neoData = await fetchNEOData();
-      setData(neoData);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
-
+  // component logic
   return (
     <div className="app-container">
       <Header />
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
+      {loading ? <LoadingSpinner /> : (
         <Canvas camera={{ position: [0, 5, 15], fov: 75 }}>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
